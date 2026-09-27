@@ -1,61 +1,69 @@
 # MaintIA ONEE
 
-> **Plateforme intelligente de maintenance du parc informatique**  
-> Une solution web complète pour la gestion du parc, des demandes, des interventions, du stock, de la maintenance préventive et des fonctionnalités d’intelligence artificielle.
+> **Intelligent IT Maintenance Management Platform**  
+> A full-stack web platform for IT asset management, maintenance operations, analytics, AI-assisted diagnostics, RAG-based support, and failure-risk prediction.
 
 ---
 
-## Table des matières
+## Table of Contents
 
-1. [Présentation du projet](#présentation-du-projet)
-2. [Objectifs](#objectifs)
-3. [Stack technique](#stack-technique)
-4. [Architecture et workflow](#architecture-et-workflow)
-5. [Démonstration visuelle de la plateforme](#démonstration-visuelle-de-la-plateforme)
-6. [Fonctionnalités principales](#fonctionnalités-principales)
-7. [Structure du projet](#structure-du-projet)
-8. [Installation et lancement](#installation-et-lancement)
-9. [Variables d’environnement](#variables-denvironnement)
-10. [Bonnes pratiques et sécurité](#bonnes-pratiques-et-sécurité)
-11. [Auteur](#auteur)
-
----
-
-## Présentation du projet
-
-**MaintIA ONEE** est une plateforme de pilotage et d’aide à la décision dédiée à la maintenance du parc informatique.  
-Le projet centralise dans une seule interface :
-
-- la gestion du **parc informatique** ;
-- le suivi des **demandes** ;
-- la gestion des **interventions** ;
-- le pilotage du **stock** ;
-- la **maintenance préventive** ;
-- l’**analyse historique** ;
-- l’**assistant IA** basé sur le RAG ;
-- les **prévisions de panne** ;
-- les **recommandations intelligentes**.
-
-L’objectif est de proposer une plateforme moderne, exploitable et évolutive, adaptée à un contexte métier réel.
+1. [Project Overview](#project-overview)
+2. [Main Objectives](#main-objectives)
+3. [Technology Stack](#technology-stack)
+4. [System Architecture](#system-architecture)
+5. [Professional Workflow](#professional-workflow)
+6. [Platform Demo](#platform-demo)
+7. [Core Features](#core-features)
+8. [Project Structure](#project-structure)
+9. [Installation](#installation)
+10. [Environment Variables](#environment-variables)
+11. [Security](#security)
+12. [Author](#author)
 
 ---
 
-## Objectifs
+## Project Overview
 
-Ce projet a été conçu pour :
+**MaintIA ONEE** is an intelligent maintenance management platform designed to centralize and optimize the management of an IT infrastructure.
 
-- améliorer la visibilité sur l’état du parc informatique ;
-- structurer la gestion des demandes et interventions ;
-- exploiter l’historique de maintenance dans un cadre analytique ;
-- aider les utilisateurs grâce à des outils IA ;
-- produire des prévisions et recommandations exploitables ;
-- centraliser plusieurs briques dans une architecture cohérente.
+The platform combines operational maintenance workflows with analytics and artificial intelligence to provide a unified environment for:
+
+- IT asset management;
+- maintenance requests;
+- corrective and preventive interventions;
+- equipment assignments;
+- stock monitoring;
+- historical analytics;
+- AI-assisted diagnostics;
+- RAG-based support;
+- failure-risk prediction;
+- intelligent recommendations.
+
+The solution is built with a modern full-stack architecture using **Next.js**, **FastAPI**, **PostgreSQL**, **Qdrant**, and AI services.
 
 ---
 
-## Stack technique
+## Main Objectives
+
+MaintIA ONEE was designed to:
+
+- centralize IT asset information in a single platform;
+- improve maintenance request tracking;
+- structure intervention management;
+- support preventive maintenance planning;
+- exploit historical maintenance data;
+- provide operational dashboards and KPIs;
+- assist technicians with AI-powered diagnostics;
+- retrieve similar historical cases using semantic search;
+- estimate equipment failure risk;
+- generate maintenance recommendations while keeping human validation in the loop.
+
+---
+
+## Technology Stack
 
 ### Frontend
+
 - **Next.js**
 - **React**
 - **TypeScript**
@@ -64,246 +72,385 @@ Ce projet a été conçu pour :
 - **Lucide React**
 
 ### Backend
-- **FastAPI**
+
 - **Python**
+- **FastAPI**
 - **SQLAlchemy**
 - **Pydantic**
 - **Alembic**
 
-### Base de données & recherche
-- **PostgreSQL**
-- **Qdrant**
+### Data Layer
 
-### IA / RAG
+- **PostgreSQL**
+- **Qdrant Vector Database**
+
+### AI & RAG
+
 - **Sentence Transformers**
 - **CrossEncoder**
-- **OpenRouter**
 - **Retrieval-Augmented Generation (RAG)**
+- **OpenRouter**
 
-### Infrastructure
+### Infrastructure & Development
+
 - **Docker**
-- **Git / GitHub**
-- **PowerShell / Windows**
+- **Git**
+- **GitHub**
+- **PowerShell**
+- **Windows**
 
 ---
 
-## Architecture et workflow
+## System Architecture
 
-### Architecture générale
+The platform follows a modular architecture where the frontend communicates with a REST API, while the backend handles business logic, persistent data, vector search, and AI services.
 
-![Architecture générale](docs/diagrams/architecture-generale.png)
+![MaintIA ONEE Architecture](docs/diagrams/architecture-generale.png)
 
-### Workflow fonctionnel
+### Main Data Flow
 
-![Workflow fonctionnel](docs/diagrams/workflow-fonctionnel.png)
-
-### Technologies utilisées
-
-![Technologies utilisées](docs/diagrams/technologies.png)
-
-### Explication du workflow
-
-Le fonctionnement général de la plateforme suit ce cycle :
-
-1. **L’utilisateur** accède à l’interface web via le frontend.
-2. Le **frontend Next.js** communique avec le **backend FastAPI**.
-3. Le backend traite la logique métier :
-   - authentification,
-   - gestion des équipements,
-   - demandes,
-   - interventions,
-   - stock,
-   - analytique,
-   - modules IA.
-4. Les données métiers sont stockées dans **PostgreSQL**.
-5. Les données vectorielles et la recherche sémantique passent par **Qdrant**.
-6. Les modules IA utilisent :
-   - les **embeddings**,
-   - le **reranking** via CrossEncoder,
-   - **OpenRouter** pour la génération de réponse contrôlée.
-7. Les résultats sont renvoyés au frontend pour affichage et interaction.
-
----
-
-# Démonstration visuelle de la plateforme
-
-## 1) Page de connexion
-
-La page de connexion introduit l’identité visuelle du projet avec une interface propre et professionnelle.
-
-![Connexion](docs/screenshots/01-login.png)
-
-**Ce qu’on y retrouve :**
-- accès sécurisé ;
-- intégration de l’identité visuelle ONEE ;
-- entrée vers toute la plateforme.
+```text
+User
+  |
+  v
+Next.js Frontend
+  |
+  v
+FastAPI Backend
+  |--------------------|
+  |                    |
+  v                    v
+PostgreSQL          Qdrant
+  |                    |
+  |                    v
+  |               Vector Search
+  |                    |
+  |                    v
+  |                RAG Layer
+  |                    |
+  |                    v
+  |                OpenRouter
+  |                    |
+  |--------------------|
+           |
+           v
+      API Response
+           |
+           v
+      Web Interface
+```
 
 ---
 
-## 2) Centre de pilotage global
+## Professional Workflow
 
-Cette vue centralise les indicateurs les plus importants du système.
+The application workflow connects operational maintenance activities with analytics and AI-assisted decision support.
 
-![Centre de pilotage](docs/screenshots/02-dashboard.png)
+![MaintIA ONEE Workflow](docs/diagrams/workflow-fonctionnel.png)
 
-**Contenu principal :**
-- parc informatique ;
-- demandes ouvertes ;
-- interventions actives ;
-- risques élevés ;
-- indicateurs de disponibilité ;
-- synthèse du stock critique.
+### Workflow
 
----
-
-## 3) Dernières demandes et interventions
-
-Cette vue donne un aperçu rapide des activités récentes.
-
-![Demandes et interventions](docs/screenshots/03-demandes-interventions.png)
-
-**Éléments affichés :**
-- dernières demandes ;
-- priorité et statut ;
-- interventions récentes ;
-- échéances préventives ;
-- risques prédictifs ;
-- recommandations.
-
----
-
-## 4) Analytique historique
-
-Le module analytique exploite les historiques importés ou générés par la plateforme.
-
-![Analytique historique](docs/screenshots/04-analytique-historique.png)
-
-**Fonctions mises en avant :**
-- volume de demandes analysées ;
-- volume de tâches analysées ;
-- solutions disponibles ;
-- délai moyen historique ;
-- évolution mensuelle des demandes ;
-- répartition des statuts.
-
----
-
-## 5) Parc informatique
-
-Le module “Parc informatique” permet de gérer l’inventaire des équipements.
-
-![Parc informatique](docs/screenshots/05-parc-informatique.png)
-
-**Informations suivies :**
-- liste des équipements ;
-- catégorie ;
-- statut ;
-- service ;
-- localisation ;
-- mise en service ;
-- actions de consultation et gestion.
+```text
+Authentication
+      |
+      v
+Control Center
+      |
+      +-----------------------------+
+      |              |              |
+      v              v              v
+IT Assets        Requests       Interventions
+      |              |              |
+      +--------------+--------------+
+                     |
+                     v
+          Maintenance Management
+                     |
+          +----------+----------+
+          |                     |
+          v                     v
+      Analytics            Preventive
+                                |
+                                v
+                         AI Assistant
+                                |
+                  +-------------+-------------+
+                  |                           |
+                  v                           v
+          Similar Case Search         Failure Prediction
+                  |                           |
+                  +-------------+-------------+
+                                |
+                                v
+                     Recommendations
+                                |
+                                v
+                       Human Validation
+```
 
 ---
 
-## 6) Affectation des équipements
+## Technologies Overview
 
-Cette vue détaille l’affectation d’un équipement à un utilisateur ou un service.
-
-![Affectation équipement](docs/screenshots/06-affectations-equipement.png)
-
-**Ce module permet :**
-- de consulter les affectations ;
-- d’ajouter une nouvelle affectation ;
-- de garder une trace des affectations existantes ;
-- de lier un équipement à un utilisateur/service.
+![Technologies Used](docs/diagrams/technologies.png)
 
 ---
 
-## 7) Assistant MaintIA — mode diagnostic
+# Platform Demo
 
-Le module d’assistance IA permet de rechercher des cas similaires à partir d’un symptôme.
+## 1. Login Interface
 
-![Assistant diagnostic](docs/screenshots/07-assistant-diagnostic.png)
+The login page provides secure access to the platform while introducing the ONEE visual identity.
 
-**Fonctionnement :**
-- saisie d’un symptôme ;
-- recherche de cas similaires ;
-- affichage d’un score de similarité ;
-- diagnostic associé ;
-- solution historique trouvée.
+![Login Interface](docs/screenshots/01-login.png)
 
----
+### Highlights
 
-## 8) Prévisions de panne
-
-Le module de prévision fournit un risque estimé pour un équipement.
-
-![Prévision de panne](docs/screenshots/08-prevision-panne.png)
-
-**Ce qu’il inclut :**
-- score de risque ;
-- niveau de confiance ;
-- facteurs calculés ;
-- explication métier ;
-- actions recommandées ;
-- validation humaine avant décision.
+- secure authentication;
+- professional institutional design;
+- direct access to the maintenance platform.
 
 ---
 
-## 9) Assistant MaintIA — Chat RAG
+## 2. Main Control Center
 
-Le copilote conversationnel aide à interroger l’historique et à assister le support.
+The main dashboard provides a consolidated operational overview.
 
-![Chat RAG](docs/screenshots/09-chat-rag.png)
+![Main Dashboard](docs/screenshots/02-dashboard.png)
 
-**Utilisation :**
-- poser une question libre ;
-- demander un historique ;
-- décrire un symptôme ;
-- recevoir une réponse contextualisée.
+### Dashboard Information
 
----
-
-# Fonctionnalités principales
-
-## Gestion métier
-- gestion des équipements ;
-- gestion du parc ;
-- demandes et suivi de statut ;
-- interventions correctives et préventives ;
-- gestion du stock ;
-- affectations ;
-- KPI et reporting.
-
-## Intelligence artificielle
-- assistant conversationnel ;
-- recherche de cas similaires ;
-- diagnostic basé sur l’historique ;
-- estimation du risque de panne ;
-- recommandations automatiques.
-
-## Pilotage
-- vue générale consolidée ;
-- analytique historique ;
-- indicateurs de performance ;
-- synthèse opérationnelle.
+- IT asset status;
+- open maintenance requests;
+- active interventions;
+- high-risk equipment;
+- availability indicators;
+- stock alerts;
+- maintenance activity overview.
 
 ---
 
-# Structure du projet
+## 3. Requests and Interventions
+
+This section displays recent maintenance activity in a clear operational view.
+
+![Requests and Interventions](docs/screenshots/03-demandes-interventions.png)
+
+### Information Displayed
+
+- latest requests;
+- priority levels;
+- request status;
+- recent interventions;
+- preventive maintenance deadlines;
+- detected risks;
+- recommendations.
+
+---
+
+## 4. Historical Analytics
+
+The analytics module transforms historical maintenance data into operational insights.
+
+![Historical Analytics](docs/screenshots/04-analytique-historique.png)
+
+### Analytics Capabilities
+
+- number of analyzed requests;
+- number of analyzed tasks;
+- available historical solutions;
+- average processing time;
+- monthly request evolution;
+- status distribution;
+- maintenance trend analysis.
+
+---
+
+## 5. IT Asset Management
+
+The IT asset module provides a centralized inventory of equipment.
+
+![IT Asset Management](docs/screenshots/05-parc-informatique.png)
+
+### Managed Information
+
+- equipment identifier;
+- category;
+- operational status;
+- assigned department;
+- location;
+- commissioning date;
+- equipment history.
+
+---
+
+## 6. Equipment Assignment
+
+This module manages equipment assignment to users or departments.
+
+![Equipment Assignment](docs/screenshots/06-affectations-equipement.png)
+
+### Capabilities
+
+- view current assignments;
+- create new assignments;
+- track assignment history;
+- associate equipment with users or services.
+
+---
+
+## 7. MaintIA Assistant — Diagnostic Mode
+
+The diagnostic assistant searches historical maintenance cases using semantic similarity.
+
+![AI Diagnostic Assistant](docs/screenshots/07-assistant-diagnostic.png)
+
+### Diagnostic Process
+
+```text
+User Symptom
+     |
+     v
+Embedding Generation
+     |
+     v
+Qdrant Vector Search
+     |
+     v
+Similarity Ranking
+     |
+     v
+Historical Diagnosis
+     |
+     v
+Suggested Historical Solution
+```
+
+### Output
+
+- similar historical cases;
+- similarity score;
+- known diagnosis;
+- associated solution;
+- contextual maintenance information.
+
+---
+
+## 8. Failure Prediction
+
+The prediction module estimates the risk associated with an equipment failure.
+
+![Failure Prediction](docs/screenshots/08-prevision-panne.png)
+
+### Prediction Output
+
+- risk score;
+- confidence level;
+- contributing factors;
+- business explanation;
+- recommended actions;
+- human validation before operational action.
+
+---
+
+## 9. MaintIA Assistant — RAG Chat
+
+The conversational assistant helps users query maintenance information through a RAG pipeline.
+
+![RAG Chat](docs/screenshots/09-chat-rag.png)
+
+### Example Uses
+
+- describe a technical symptom;
+- search maintenance history;
+- ask for similar incidents;
+- retrieve known solutions;
+- obtain contextualized assistance.
+
+### RAG Workflow
+
+```text
+User Question
+     |
+     v
+Text Embedding
+     |
+     v
+Qdrant Retrieval
+     |
+     v
+Relevant Historical Context
+     |
+     v
+CrossEncoder Reranking
+     |
+     v
+Prompt Construction
+     |
+     v
+OpenRouter LLM
+     |
+     v
+Contextualized Answer
+```
+
+---
+
+# Core Features
+
+## Operational Management
+
+- IT asset inventory;
+- equipment assignments;
+- maintenance requests;
+- corrective interventions;
+- preventive interventions;
+- spare-parts and stock monitoring;
+- operational status tracking.
+
+## Analytics
+
+- historical maintenance analysis;
+- KPI visualization;
+- request evolution;
+- intervention monitoring;
+- status distribution;
+- maintenance trends.
+
+## Artificial Intelligence
+
+- RAG conversational assistant;
+- semantic search;
+- similar-case retrieval;
+- AI-assisted diagnosis;
+- failure-risk estimation;
+- maintenance recommendations.
+
+## Decision Support
+
+The platform is designed as a decision-support tool.  
+AI-generated outputs are intended to assist users and can be validated by a human before operational decisions are applied.
+
+---
+
+# Project Structure
 
 ```text
 Projet_Maintenance_Intelligente_ONEE/
 │
 ├── README.md
+├── .gitignore
+│
 ├── docs/
 │   ├── assets/
 │   │   ├── onee-original.png
 │   │   └── onee-banner-adaptee.png
+│   │
 │   ├── diagrams/
 │   │   ├── architecture-generale.png
 │   │   ├── workflow-fonctionnel.png
 │   │   └── technologies.png
+│   │
 │   ├── screenshots/
 │   │   ├── 01-login.png
 │   │   ├── 02-dashboard.png
@@ -314,65 +461,78 @@ Projet_Maintenance_Intelligente_ONEE/
 │   │   ├── 07-assistant-diagnostic.png
 │   │   ├── 08-prevision-panne.png
 │   │   └── 09-chat-rag.png
+│   │
 │   ├── ARCHITECTURE.md
 │   └── INSTALLATION.md
 │
-├── frontend_maintenance_onee_definitif_windows/
+├── frontend/
 │   ├── app/
 │   ├── components/
+│   ├── docs/
 │   ├── hooks/
 │   ├── lib/
 │   ├── public/
 │   ├── scripts/
 │   ├── styles/
+│   ├── .env.local.example
 │   ├── package.json
 │   ├── package-lock.json
-│   ├── tsconfig.json
-│   └── .env.local.example
+│   └── tsconfig.json
 │
-└── 07_Developpement/
+└── backend/
     └── Backend/
         ├── app/
         ├── alembic/
         ├── scripts/
         ├── tests/
-        ├── requirements.txt
-        ├── requirements.lock.txt
+        ├── .env.example
         ├── alembic.ini
         ├── pytest.ini
-        └── .env.example
+        ├── requirements.txt
+        └── requirements.lock.txt
 ```
 
-### Explication des dossiers
+### `frontend/`
 
-### `frontend_maintenance_onee_definitif_windows/`
-Contient toute l’interface utilisateur :
-- pages Next.js ;
-- composants UI ;
-- hooks React ;
-- logique de présentation ;
-- intégration avec l’API.
+Contains the user interface and client-side logic:
 
-### `07_Developpement/Backend/`
-Contient le backend applicatif :
-- routes API ;
-- services métier ;
-- modèles ;
-- schémas ;
-- migrations ;
-- logique IA et RAG.
+- Next.js pages;
+- reusable React components;
+- frontend API integration;
+- charts and visualizations;
+- authentication interface;
+- user interactions.
+
+### `backend/Backend/`
+
+Contains the application backend:
+
+- FastAPI routes;
+- business services;
+- database models;
+- validation schemas;
+- Alembic migrations;
+- authentication logic;
+- analytics;
+- AI and RAG services.
 
 ### `docs/`
-Contient la documentation de présentation :
-- images de démonstration ;
-- diagrammes ;
-- documentation architecture et installation.
+
+Contains the public project documentation:
+
+- screenshots;
+- architecture diagrams;
+- technical documentation;
+- installation documentation.
 
 ---
 
-# Installation et lancement
+# Installation
 
-## 1. Prérequis
+## Requirements
+
+Make sure the following tools are installed:
+
 - Python 3.12+
 - Node.js
 - npm
@@ -381,21 +541,53 @@ Contient la documentation de présentation :
 
 ---
 
-## 2. Lancer le backend
+## Backend Setup
+
+Navigate to the backend:
 
 ```powershell
-cd 07_Developpement\Backend
+cd backend\Backend
+```
+
+Create a virtual environment:
+
+```powershell
 python -m venv .venv
+```
+
+Activate it:
+
+```powershell
 .\.venv\Scripts\Activate.ps1
+```
+
+Install dependencies:
+
+```powershell
 pip install -r requirements.txt
+```
+
+Create the local environment file:
+
+```powershell
 Copy-Item .env.example .env
+```
+
+Start the required containers:
+
+```powershell
 docker start maintenance_onee_db
 docker start maintenance_onee_qdrant
+```
+
+Run FastAPI:
+
+```powershell
 $env:PYTHONPATH = (Get-Location).Path
 python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-Documentation API :
+API documentation:
 
 ```text
 http://127.0.0.1:8000/docs
@@ -403,16 +595,33 @@ http://127.0.0.1:8000/docs
 
 ---
 
-## 3. Lancer le frontend
+## Frontend Setup
+
+Navigate to the frontend:
 
 ```powershell
-cd frontend_maintenance_onee_definitif_windows
+cd frontend
+```
+
+Install dependencies:
+
+```powershell
 npm install
+```
+
+Create the frontend environment file:
+
+```powershell
 Copy-Item .env.local.example .env.local
+```
+
+Run the application:
+
+```powershell
 npm run dev
 ```
 
-Application :
+Application URL:
 
 ```text
 http://localhost:3000
@@ -420,10 +629,9 @@ http://localhost:3000
 
 ---
 
-# Variables d’environnement
+# Environment Variables
 
-## Backend
-Exemple de configuration :
+## Backend Example
 
 ```env
 APP_NAME=Plateforme Intelligente de Maintenance ONEE
@@ -456,8 +664,7 @@ OPENROUTER_API_KEY=CHANGE_ME
 OPENROUTER_MODEL=CHANGE_ME
 ```
 
-## Frontend
-Exemple :
+## Frontend Example
 
 ```env
 NEXT_PUBLIC_API_URL=http://127.0.0.1:8000/api/v1
@@ -465,9 +672,9 @@ NEXT_PUBLIC_API_URL=http://127.0.0.1:8000/api/v1
 
 ---
 
-# Bonnes pratiques et sécurité
+# Security
 
-À ne jamais pousser sur GitHub :
+Never commit sensitive local files such as:
 
 ```text
 .env
@@ -480,19 +687,20 @@ node_modules/
 data/
 ```
 
-Bonnes pratiques recommandées :
+Recommended practices:
 
-- utiliser `.env.example` et `.env.local.example` pour les exemples ;
-- ne jamais publier les vraies clés API ;
-- garder les données sensibles localement ;
-- documenter clairement le projet à la racine.
+- keep real credentials only in local `.env` files;
+- publish only `.env.example` files with placeholder values;
+- never commit API keys or secrets;
+- keep private operational data outside the public repository;
+- rotate any credential that has been accidentally exposed.
 
 ---
 
-# Auteur
+# Author
 
 **Aya Ettalbi**  
-Élève ingénieure en Big Data & Intelligence Artificielle  
+Engineering Student in **Big Data & Artificial Intelligence**  
 **ENSA Tétouan**
 
-Projet : **MaintIA ONEE — Plateforme Intelligente de Maintenance**
+Project: **MaintIA ONEE — Intelligent IT Maintenance Management Platform**
