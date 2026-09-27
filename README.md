@@ -704,17 +704,9 @@ Recommended practices:
 
 ## Connect with me
 
-<p align="left">
-  <a href="https://github.com/aya-ettalbi" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-aya--ettalbi-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
-  </a>
 
-  <a href="YOUR_LINKEDIN_URL" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-Aya%20Ettalbi-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
-  </a>
-</p>
-
----
+- GitHub: https://github.com/aya-ettalbi
+- LinkedIn: https://www.linkedin.com/in/aya-ettalbi-0a5012336
 
 ### Author
 
