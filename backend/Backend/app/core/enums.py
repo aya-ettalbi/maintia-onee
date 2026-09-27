@@ -1,0 +1,94 @@
+from enum import Enum
+
+
+class Role(str, Enum):
+    ADMIN = "ADMIN"
+    MANAGER = "MANAGER"
+    TECHNICIAN = "TECHNICIAN"
+    STOCK_MANAGER = "STOCK_MANAGER"
+    REQUESTER = "REQUESTER"
+
+
+class UserStatus(str, Enum):
+    ACTIVE = "ACTIVE"
+    INACTIVE = "INACTIVE"
+
+
+class EquipmentStatus(str, Enum):
+    IN_SERVICE = "IN_SERVICE"
+    IN_FAILURE = "IN_FAILURE"
+    IN_MAINTENANCE = "IN_MAINTENANCE"
+    WAITING_PART = "WAITING_PART"
+    OUT_OF_SERVICE = "OUT_OF_SERVICE"
+    REFORMED = "REFORMED"
+    ARCHIVED = "ARCHIVED"
+
+
+class RequestStatus(str, Enum):
+    DRAFT = "DRAFT"
+    SUBMITTED = "SUBMITTED"
+    VALIDATED = "VALIDATED"
+    REJECTED = "REJECTED"
+    ASSIGNED = "ASSIGNED"
+    IN_PROGRESS = "IN_PROGRESS"
+    RESOLVED = "RESOLVED"
+    CLOSED = "CLOSED"
+    CANCELLED = "CANCELLED"
+
+
+class Priority(str, Enum):
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
+    CRITICAL = "CRITICAL"
+
+
+class InterventionStatus(str, Enum):
+    PLANNED = "PLANNED"
+    WAITING = "WAITING"
+    DIAGNOSING = "DIAGNOSING"
+    REPAIRING = "REPAIRING"
+    WAITING_FOR_PART = "WAITING_FOR_PART"
+    TESTING = "TESTING"
+    COMPLETED = "COMPLETED"
+    CANCELLED = "CANCELLED"
+
+
+class MaintenanceType(str, Enum):
+    CORRECTIVE = "CORRECTIVE"
+    PREVENTIVE = "PREVENTIVE"
+
+
+class StockMovementType(str, Enum):
+    IN = "IN"
+    OUT = "OUT"
+    RETURN = "RETURN"
+    ADJUSTMENT_POSITIVE = "ADJUSTMENT_POSITIVE"
+    ADJUSTMENT_NEGATIVE = "ADJUSTMENT_NEGATIVE"
+    INVENTORY = "INVENTORY"
+
+
+class RecommendationType(str, Enum):
+    PREVENTIVE_MAINTENANCE = "PREVENTIVE_MAINTENANCE"
+    REPLACEMENT = "REPLACEMENT"
+    REFORM = "REFORM"
+    STOCK_REPLENISHMENT = "STOCK_REPLENISHMENT"
+    PURCHASE_REVIEW = "PURCHASE_REVIEW"
+    WORKLOAD_OPTIMIZATION = "WORKLOAD_OPTIMIZATION"
+
+
+class RecommendationStatus(str, Enum):
+    NEW = "NEW"
+    TO_REVIEW = "TO_REVIEW"
+    ACCEPTED = "ACCEPTED"
+    PLANNED = "PLANNED"
+    IN_PROGRESS = "IN_PROGRESS"
+    APPLIED = "APPLIED"
+    REJECTED = "REJECTED"
+    EXPIRED = "EXPIRED"
+
+
+class RiskLevel(str, Enum):
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"

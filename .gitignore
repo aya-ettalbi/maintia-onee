@@ -1,0 +1,46 @@
+# OS
+desktop.ini
+Thumbs.db
+.DS_Store
+
+# Frontend
+**/node_modules/
+**/.next/
+**/out/
+**/build/
+**/*.tsbuildinfo
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+
+# Backend
+**/.venv/
+**/venv/
+**/__pycache__/
+**/*.pyc
+**/.pytest_cache/
+# Secrets
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.local.example
+# Databases / dumps
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+**/*.dump
+
+# Private data
+**/data/
+**/qa_reports/
+
+# Backups
+**/backup*/
+**/backups/
+**/*.backup*
+**/*.bak
+
+# IDE
+**/.vscode/
+**/.idea/

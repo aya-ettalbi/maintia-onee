@@ -1,0 +1,51 @@
+# Python
+.venv/
+venv/
+env/
+
+__pycache__/
+*.py[cod]
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+*.dump
+*.sql
+
+# Private datasets
+data/
+qa_reports/
+
+# Backups
+backup*/
+backups/
+*.backup*
+*.bak
+*.old
+
+# Generated files
+audit_*
+backend_routes_audit*
+openapi_backend_*
+structure_backend_import.txt
+
+# Logs
+*.log
+logs/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
